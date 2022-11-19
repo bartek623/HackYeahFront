@@ -1,87 +1,151 @@
 import { useRef } from "react";
 import { useState } from "react";
+import useFetch from "../../hooks/useFetch";
 import style from "./Authorization.module.css";
 
 function Authorization() {
+  const { setData, getData } = useFetch();
+
   const [canLogin, setCanLogin] = useState(false);
   const [isRegistering, setIsRegistering] = useState(false);
-  const input1 = useRef();
-  const input2 = useRef();
-  const input3 = useRef();
-  const input4 = useRef();
+
+  const inputLogin = useRef();
+  const inputFName = useRef();
+  const inputLName = useRef();
+  const inputAddr = useRef();
   const inputP = useRef();
   const inputCP = useRef();
 
   const zmien = function () {
     setIsRegistering((prev) => !prev);
   };
+
   const changeHandler = function () {
     if (
       !isRegistering &&
-      input1.current.value !== "" &&
+      inputLogin.current.value !== "" &&
       inputP.current.value !== ""
     ) {
       setCanLogin(true);
       return;
     }
 
-    if(input1.current.value ==='') {
-      setCanLogin(false)
-      return};
-    if(input2.current.value ==='') {
-      setCanLogin(false)
-      return};
-    if(input3.current.value ==='') {
-      setCanLogin(false)
-      return};
-    if(input4.current.value ==='') {
-      setCanLogin(false)
-      return};
-    if(inputCP.current.value ==='') {
-      setCanLogin(false)
-      return};
-    if(inputP.current.value ==='') {
-      setCanLogin(false)
-      return};
-        
-    setCanLogin(true) 
-       
-  }
+    if (
+      inputFName.current?.value === "" ||
+      inputLogin.current?.value === "" ||
+      inputLName.current?.value === "" ||
+      inputAddr.current?.value === "" ||
+      inputCP.current?.value === "" ||
+      inputP.current?.value === ""
+    ) {
+      setCanLogin(false);
+      return;
+    }
 
-  return <div className={style.container}>
-    <section className={style.card}>
-      <fieldset>
-        <legend className={style.legend}>FILL USER DATA TO PROCEED</legend>
-        <div className={style.formik}><div className={style.left}>
+    setCanLogin(true);
+  };
 
-        <label htmlFor="login" >User name: </label> <br></br>
-        <input type="text" ref={input1} onChange={changeHandler} name="email"></input>
+  const submitHandler = function (e) {
+    e.preventDefault();
+    console.log("submitted");
 
-      {isRegistering && <div className={style.left}>
-        <label htmlFor="login" >First name: </label> <br></br>
-        <input type="text" ref={input2} onChange={changeHandler} name="email"></input>
+    let data;
+    if (isRegistering) {
+      data = {
+        idClient: Math.random(),
+        login: inputLogin.current.value,
+        password: inputP.current.value,
+        firstName: inputFName.current.value,
+        lastName: inputLName.current.value,
+        address: inputAddr.current.value,
+      };
+      setData(data, () => {}, "clients");
+    } else {
+      data = {
+        login: inputLogin.current.value,
+        password: inputP.current.value,
+      };
+      getData((data) => {
+        console.log(data);
+      }, "clients");
+    }
+  };
 
-        <label htmlFor="login" >Last name: </label> <br></br>
-        <input type="text" ref={input3} onChange={changeHandler} name="email"></input>
+  return (
+    <div className={style.container}>
+      <section className={style.card}>
+        <fieldset onSubmit={submitHandler}>
+          <legend className={style.legend}>FILL USER DATA TO PROCEED</legend>
+          <form>
+            <div className={style.formik}>
+              <div className={style.left}>
+                <label htmlFor="login">User name: </label> <br></br>
+                <input
+                  type="text"
+                  ref={inputLogin}
+                  onChange={changeHandler}
+                  name="login"
+                ></input>
+                {isRegistering && (
+                  <div className={style.left}>
+                    <label htmlFor="firstname">First name: </label> <br></br>
+                    <input
+                      type="text"
+                      ref={inputFName}
+                      onChange={changeHandler}
+                      name="firstname"
+                    ></input>
+                    <label htmlFor="lastname">Last name: </label> <br></br>
+                    <input
+                      type="text"
+                      ref={inputLName}
+                      onChange={changeHandler}
+                      name="lastname"
+                    ></input>
+                    <label htmlFor="address">Address: </label> <br></br>
+                    <input
+                      type="text"
+                      ref={inputAddr}
+                      onChange={changeHandler}
+                      name="address"
+                    ></input>
+                  </div>
+                )}
+              </div>
+              <div className={style.right}>
+                <label htmlFor="password">Password: </label> <br></br>
+                <input
+                  ref={inputP}
+                  onChange={changeHandler}
+                  type="password"
+                  name="password"
+                ></input>
+                {isRegistering && (
+                  <div>
+                    {" "}
+                    <br></br> <label htmlFor="confirm">Confirm password</label>{" "}
+                    <br></br>{" "}
+                    <input
+                      ref={inputCP}
+                      onChange={changeHandler}
+                      type="password"
+                    ></input>
+                  </div>
+                )}
+              </div>
+            </div>
 
-        <label htmlFor="login" >Address: </label> <br></br>
-        <input type="text" ref={input4} onChange={changeHandler} name="email"></input>
-      </div>}
-
-        </div><div className={style.right}>
-        <label htmlFor="password">Password: </label> <br></br>
-        <input ref={inputP} onChange={changeHandler} type="password" name="password"></input>
-        {isRegistering && <div> <br></br> <label htmlFor="confirm">Confirm password</label>  <br></br> <input ref={inputCP} onChange={changeHandler} type="password"></input></div>}
-
-        </div></div>
-
-        <div className={style.buttons}>
-        <button className={style.btn} onClick={zmien}>{isRegistering==1 ? "LOG IN" : "SIGN UP"}</button>
-        {canLogin &&  <button >SEND</button>} 
-        </div>
-      </fieldset>
-
-    </section></div>
+            <div className={style.buttons}>
+              <button type="button" className={style.btn} onClick={zmien}>
+                {isRegistering === 1 ? "LOG IN" : "SIGN UP"}
+              </button>
+              {canLogin && <button type="submit">SEND</button>}
+            </div>
+          </form>
+        </fieldset>
+      </section>
+    </div>
+  );
 }
 
 export default Authorization;
