@@ -1,5 +1,8 @@
+import { useState } from "react";
+import style from "./Authorization.module.css";
+
 function Authorization() {
-  return <div>123</div>;
+  return <div></div>;
 }
 
 export default Authorization;
