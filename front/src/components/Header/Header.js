@@ -8,7 +8,7 @@ function Header() {
       <nav className={style["main-nav"]}>
         <ul>
           <li>
-            <Link to="/home">Homepage</Link>
+            <Link to="/">Homepage</Link>
           </li>
           <li>
             <Link to="/history">History</Link>
