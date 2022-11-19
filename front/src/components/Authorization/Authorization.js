@@ -5,10 +5,10 @@ import style from "./Authorization.module.css";
 function Authorization() {
   const [canLogin, setCanLogin] = useState(false);
   const [isRegistering, setIsRegistering] = useState(false);
-  const input1 = useRef();
-  const input2 = useRef();
-  const input3 = useRef();
-  const input4 = useRef();
+  const inputLogin = useRef();
+  const inputFName = useRef();
+  const inputLName = useRef();
+  const inputAddr = useRef();
   const inputP = useRef();
   const inputCP = useRef();
 
@@ -18,29 +18,14 @@ function Authorization() {
   const changeHandler = function () {
     if (
       !isRegistering &&
-      input1.current.value !== "" &&
+      inputLogin.current.value !== "" &&
       inputP.current.value !== ""
     ) {
       setCanLogin(true);
       return;
     }
 
-    if(input1.current.value ==='') {
-      setCanLogin(false)
-      return};
-    if(input2.current.value ==='') {
-      setCanLogin(false)
-      return};
-    if(input3.current.value ==='') {
-      setCanLogin(false)
-      return};
-    if(input4.current.value ==='') {
-      setCanLogin(false)
-      return};
-    if(inputCP.current.value ==='') {
-      setCanLogin(false)
-      return};
-    if(inputP.current.value ==='') {
+    if(inputLogin.current.value ==='' || inputFName.current.value ==='' || inputLName.current.value ==='' || inputAddr.current.value ==='' || inputCP.current.value ==='' || inputP.current.value ==='') {
       setCanLogin(false)
       return};
         
@@ -52,26 +37,37 @@ function Authorization() {
     <section className={style.card}>
       <fieldset>
         <legend className={style.legend}>FILL USER DATA TO PROCEED</legend>
+
         <div className={style.formik}><div className={style.left}>
-
+        
+        <div>
         <label htmlFor="login" >User name: </label> <br></br>
-        <input type="text" ref={input1} onChange={changeHandler} name="email"></input>
+        <input type="text" ref={inputLogin} onChange={changeHandler} name="login"></input>
+        </div>
 
-      {isRegistering && <div className={style.left}>
-        <label htmlFor="login" >First name: </label> <br></br>
-        <input type="text" ref={input2} onChange={changeHandler} name="email"></input>
+      {isRegistering && <div className={style['left', 'confPass']}>
+        <div>
+        <label htmlFor="firstname" >First name: </label> <br></br>
+        <input type="text" ref={inputFName} onChange={changeHandler} name="firstname"></input>
+        </div>
 
-        <label htmlFor="login" >Last name: </label> <br></br>
-        <input type="text" ref={input3} onChange={changeHandler} name="email"></input>
+        <div>
+        <label htmlFor="lastname" >Last name: </label> <br></br>
+        <input type="text" ref={inputLName} onChange={changeHandler} name="lastname"></input>
+        </div>
 
-        <label htmlFor="login" >Address: </label> <br></br>
-        <input type="text" ref={input4} onChange={changeHandler} name="email"></input>
+        <div>
+        <label htmlFor="address" >Address: </label> <br></br>
+        <input type="text" ref={inputAddr} onChange={changeHandler} name="address"></input>
+      </div>
       </div>}
 
         </div><div className={style.right}>
+          <div>
         <label htmlFor="password">Password: </label> <br></br>
         <input ref={inputP} onChange={changeHandler} type="password" name="password"></input>
-        {isRegistering && <div> <br></br> <label htmlFor="confirm">Confirm password</label>  <br></br> <input ref={inputCP} onChange={changeHandler} type="password"></input></div>}
+        </div>
+        {isRegistering && <div className={style.confPass}><div> <br></br> <label htmlFor="confirm">Confirm password</label>  <br></br> <input ref={inputCP} onChange={changeHandler} type="password"></input></div></div>}
 
         </div></div>
 
