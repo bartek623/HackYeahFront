@@ -11,6 +11,7 @@ function BagForm() {
 
   const submitHandler = function (e) {
     e.preventDefault();
+    setTokens(0);
   };
 
   const changeHandler = function () {
@@ -52,6 +53,17 @@ function BagForm() {
             type="number"
             id="weight"
             placeholder="Type weight of your bag"
+            onChange={changeHandler}
+          ></input>
+        </div>
+
+        <div className={style.control}>
+          <label htmlFor="weight">Address</label>
+          <input
+            ref={weightRef}
+            type="number"
+            id="weight"
+            placeholder="Type your address"
             onChange={changeHandler}
           ></input>
         </div>

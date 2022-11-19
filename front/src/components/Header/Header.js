@@ -16,8 +16,15 @@ function Header() {
           <li>
             <Link to="/form">Form</Link>
           </li>
+          <li>
+            <Link to="/withdraw">Withdraw</Link>
+          </li>
         </ul>
       </nav>
+      <div className={style.tokens}>
+        <p>Your balance: </p>
+        <span>0</span>
+      </div>
     </header>
   );
 }
