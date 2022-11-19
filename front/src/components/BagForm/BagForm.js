@@ -1,19 +1,44 @@
+import { useState, useRef } from "react";
+
 import style from "./BagForm.module.css";
 
 function BagForm() {
+  const [canSubmit, setCanSubmit] = useState(false);
+  const [tokens, setTokens] = useState(0);
+  const codeRef = useRef();
+  const sortRef = useRef();
+  const weightRef = useRef();
+
+  const submitHandler = function (e) {
+    e.preventDefault();
+  };
+
+  const changeHandler = function () {
+    if (
+      codeRef.current.value === "" ||
+      sortRef.current.value === "" ||
+      weightRef.current.value === ""
+    ) {
+      setCanSubmit(false);
+      return;
+    }
+
+    setCanSubmit(true);
+  };
+
   return (
     <main className={style.main}>
-      <form className={style["form-card"]}>
+      <form className={style["form-card"]} onSubmit={submitHandler}>
         <h3 className={style.heading}>Send request</h3>
 
         <div className={style.control}>
           <label htmlFor="code">Code</label>
-          <input id="code"></input>
+          <input ref={codeRef} id="code" onChange={changeHandler}></input>
         </div>
 
         <div className={style.control}>
           <label htmlFor="code">Is sorted?</label>
-          <select id="code">
+          <select ref={sortRef} id="code" onChange={changeHandler}>
             <option value="">Select option</option>
             <option value="true">Yes</option>
             <option value="false">No</option>
@@ -22,15 +47,21 @@ function BagForm() {
 
         <div className={style.control}>
           <label htmlFor="weight">Weight</label>
-          <input id="weight"></input>
+          <input
+            ref={weightRef}
+            type="number"
+            id="weight"
+            placeholder="Type weight of your bag"
+            onChange={changeHandler}
+          ></input>
         </div>
 
         <div className={style.tokens}>
           <div>You will get: </div>
-          <span>0</span>
+          <span>{tokens}</span>
         </div>
 
-        <button className={style.submit} type="submit">
+        <button disabled={!canSubmit} className={style.submit} type="submit">
           Submit
         </button>
       </form>

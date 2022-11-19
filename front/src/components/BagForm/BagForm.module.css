@@ -50,6 +50,10 @@
   width: 100%;
 }
 
+.control input::placeholder {
+  color: #555;
+}
+
 .tokens {
   display: flex;
   justify-content: space-between;
@@ -65,4 +69,18 @@
 
 .submit {
   background-color: #eee;
+  transition: all 0.3s;
+}
+
+.submit:hover {
+  cursor: pointer;
+  background-color: #ccc;
+}
+
+.submit:disabled {
+  opacity: 0.5;
+}
+
+.submit:disabled:hover {
+  cursor: not-allowed;
 }
