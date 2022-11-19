@@ -26,6 +26,9 @@ function Header() {
           <li>
             <Link to="/withdraw">Withdraw</Link>
           </li>
+          <li>
+            <Link to="/admin-panel">Admin Panel</Link>
+          </li>
         </ul>
       </nav>
       <div className={style.tokens}>
