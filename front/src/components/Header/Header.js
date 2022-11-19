@@ -13,11 +13,15 @@ function Header() {
           <li>
             <Link to="/Profile">Profile</Link>
           </li>
+        
           <li>
             <Link to="/history">History</Link>
           </li>
           <li>
             <Link to="/form">Form</Link>
+          </li>
+          <li>
+            <Link to="/Authorization">LOG IN / SIGN UP</Link>
           </li>
         </ul>
       </nav>

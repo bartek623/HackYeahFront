@@ -20,7 +20,7 @@
     justify-content: space-around;
 }
 
-fieldset{
+.card fieldset{
     padding: 20px;
 }
 
@@ -38,6 +38,6 @@ fieldset{
     flex-direction: column;
 }
 
-input{
+.card input{
     margin-bottom: 10px;
 }
