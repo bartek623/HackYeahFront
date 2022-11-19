@@ -5,6 +5,7 @@ import Homepage from "../Homepage/Homepage";
 import PageNotFound from "../PageNotFound/PageNotFound";
 import BagForm from "../BagForm/BagForm";
 import History from "../History/History";
+import AdminPanel from "../AdminPanel/AdminPanel";
 
 import style from "./Main.module.css";
 
@@ -17,6 +18,7 @@ function Main() {
         <Route path="/" element={<Homepage />} />
         <Route path="/history" element={<History />} />
         <Route path="/form" element={<BagForm />} />
+        <Route path="/admin-panel" element={<AdminPanel />} />
       </Routes>
     </div>
   );

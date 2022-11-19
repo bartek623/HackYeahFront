@@ -27,6 +27,7 @@
 .control {
   display: flex;
   flex-direction: column;
+  align-self: flex-start;
   gap: 3px;
 
   margin-bottom: 1.8rem;
@@ -38,7 +39,7 @@
   color: #222;
 }
 
-.control input,
+.control input:not(.radio),
 .control select,
 .submit {
   color: #222;
@@ -83,4 +84,9 @@
 
 .submit:disabled:hover {
   cursor: not-allowed;
+}
+
+.radio {
+  margin-left: 1rem;
+  width: fit-content;
 }

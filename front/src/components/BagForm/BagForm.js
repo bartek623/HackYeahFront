@@ -38,15 +38,6 @@ function BagForm() {
         </div>
 
         <div className={style.control}>
-          <label htmlFor="code">Is sorted?</label>
-          <select ref={sortRef} id="code" onChange={changeHandler}>
-            <option value="">Select option</option>
-            <option value="true">Yes</option>
-            <option value="false">No</option>
-          </select>
-        </div>
-
-        <div className={style.control}>
           <label htmlFor="weight">Weight</label>
           <input
             ref={weightRef}
@@ -58,14 +49,19 @@ function BagForm() {
         </div>
 
         <div className={style.control}>
-          <label htmlFor="weight">Address</label>
+          <label htmlFor="address">Address</label>
           <input
             ref={weightRef}
             type="number"
-            id="weight"
+            id="address"
             placeholder="Type your address"
             onChange={changeHandler}
           ></input>
+        </div>
+
+        <div className={style.control}>
+          <label htmlFor="code">Is sorted?</label>
+          <input type="checkbox" className={style.radio}></input>
         </div>
 
         <div className={style.tokens}>
