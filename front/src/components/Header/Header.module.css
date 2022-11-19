@@ -1,4 +1,6 @@
 .main-header {
+  position: relative;
+
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -9,6 +11,28 @@
   color: #ccc;
   border-bottom: 1px solid #444;
   box-shadow: 0 0 8px 8px rgba(0, 0, 0, 0.2);
+}
+
+.tokens {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  translate: 0 calc(100% + 2rem);
+
+  display: flex;
+  gap: 1rem;
+  background-color: #333;
+  padding: 1.2rem;
+  box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.1);
+  border-bottom-left-radius: 1.2rem;
+  border-top-left-radius: 1.2rem;
+
+  font-size: 1.6rem;
+}
+
+.tokens span {
+  font-weight: 600;
+  color: #ffd000;
 }
 
 .main-nav ul {

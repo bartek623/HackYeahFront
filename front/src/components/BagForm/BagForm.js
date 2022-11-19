@@ -11,6 +11,7 @@ function BagForm() {
 
   const submitHandler = function (e) {
     e.preventDefault();
+    setTokens(0);
   };
 
   const changeHandler = function () {
@@ -37,15 +38,6 @@ function BagForm() {
         </div>
 
         <div className={style.control}>
-          <label htmlFor="code">Is sorted?</label>
-          <select ref={sortRef} id="code" onChange={changeHandler}>
-            <option value="">Select option</option>
-            <option value="true">Yes</option>
-            <option value="false">No</option>
-          </select>
-        </div>
-
-        <div className={style.control}>
           <label htmlFor="weight">Weight</label>
           <input
             ref={weightRef}
@@ -54,6 +46,22 @@ function BagForm() {
             placeholder="Type weight of your bag"
             onChange={changeHandler}
           ></input>
+        </div>
+
+        <div className={style.control}>
+          <label htmlFor="address">Address</label>
+          <input
+            ref={weightRef}
+            type="number"
+            id="address"
+            placeholder="Type your address"
+            onChange={changeHandler}
+          ></input>
+        </div>
+
+        <div className={style.control}>
+          <label htmlFor="code">Is sorted?</label>
+          <input type="checkbox" className={style.radio}></input>
         </div>
 
         <div className={style.tokens}>

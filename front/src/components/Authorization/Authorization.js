@@ -1,26 +1,26 @@
+import { useRef } from "react";
+import { useState } from "react";
+import style from "./Authorization.module.css";
 
+function Authorization() {
+  const [canLogin, setCanLogin] = useState(false);
+  const [isRegistering, setIsRegistering] = useState(false);
+  const input1 = useRef();
+  const input2 = useRef();
+  const input3 = useRef();
+  const input4 = useRef();
+  const inputP = useRef();
+  const inputCP = useRef();
 
-import {useRef} from "react";
-import {useState} from "react";
-import style from './Authorization.module.css';
-
-function Authorization(){
-  const [canLogin, setCanLogin] = useState(false)
-  const [isRegistering, setIsRegistering] = useState(false)
-  const input1 = useRef()
-  const input2 = useRef()
-  const input3 = useRef()
-  const input4 = useRef()
-  const inputP = useRef()
-  const inputCP = useRef()
-
-  const zmien = function(){
-    setIsRegistering(prev => !prev);
-    
-
-  }
-  const changeHandler = function(){
-    if(!isRegistering && input1.current.value !=='' && inputP.current.value !== ''){
+  const zmien = function () {
+    setIsRegistering((prev) => !prev);
+  };
+  const changeHandler = function () {
+    if (
+      !isRegistering &&
+      input1.current.value !== "" &&
+      inputP.current.value !== ""
+    ) {
       setCanLogin(true);
       return;
     }
