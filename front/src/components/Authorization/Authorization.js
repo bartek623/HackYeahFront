@@ -51,7 +51,7 @@ function Authorization(){
   return <div className={style.container}>
     <section className={style.card}>
       <fieldset>
-        <legend>FILL USER DATA</legend>
+        <legend className={style.legend}>FILL USER DATA TO PROCEED</legend>
         <div className={style.formik}><div className={style.left}>
 
         <label htmlFor="login" >User name: </label> <br></br>
@@ -76,13 +76,12 @@ function Authorization(){
         </div></div>
 
         <div className={style.buttons}>
-        <button onClick={zmien}>{isRegistering ? "LOG IN" : "SIGN UP"}</button>
-        {canLogin &&  <button>SEND</button>} 
+        <button className={style.btn} onClick={zmien}>{isRegistering==1 ? "LOG IN" : "SIGN UP"}</button>
+        {canLogin &&  <button >SEND</button>} 
         </div>
       </fieldset>
 
-    </section>
-  </div>;
+    </section></div>
 }
 
 export default Authorization;
