@@ -1,13 +1,14 @@
 import { useCallback, useState } from "react";
 
-const url = "https://textiles-hy2022.herokuapp.com/api/receivers";
-
 function useFetch() {
   const [isLoading, setIsLoading] = useState();
   const [error, setError] = useState();
 
-  const getData = useCallback(async function (applyFn) {
+  const getData = useCallback(async function (applyFn, type) {
     setIsLoading(true);
+
+    const url = `https://textiles-hy2022.herokuapp.com/api/${type}`;
+
     try {
       const res = await fetch(url);
 
@@ -24,10 +25,17 @@ function useFetch() {
     setIsLoading(false);
   }, []);
 
-  const setData = useCallback(async function (applyFn) {
+  const setData = useCallback(async function (dataToSend, applyFn, type) {
     setIsLoading(true);
+
+    const url = `https://textiles-hy2022.herokuapp.com/api/${type}`;
+
     try {
-      const res = await fetch(url);
+      const res = await fetch(url, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(dataToSend),
+      });
 
       if (!res.ok) throw new Error("Something went wrong");
 
