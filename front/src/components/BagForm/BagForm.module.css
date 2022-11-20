@@ -13,9 +13,19 @@
   color: #111;
 }
 
+.fixDiv{
+  opacity: 0.6;
+}
+.fixDiv:hover{
+  opacity: 1;
+}
+
 .form-card {
   height: fit-content;
   background-color: #888;
+  background-image: url("../../img/hero-img.jpeg");
+  background-size: cover;
+  background-blend-mode:multiply  ;
   width: 64rem;
   max-width: 95%;
   box-shadow: 0 0 4px 4px rgba(0, 0, 0, 0.05);

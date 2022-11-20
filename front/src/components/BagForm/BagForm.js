@@ -1,4 +1,5 @@
 import { useState, useRef } from "react";
+import heroImg from "../../img/hero-img.jpeg";
 
 import style from "./BagForm.module.css";
 
@@ -8,6 +9,7 @@ function BagForm() {
   const codeRef = useRef();
   const sortRef = useRef();
   const weightRef = useRef();
+  const addrRef = useRef();
 
   const submitHandler = function (e) {
     e.preventDefault();
@@ -15,10 +17,12 @@ function BagForm() {
   };
 
   const changeHandler = function () {
+    setTokens(parseInt(weightRef.current.value) ? parseInt(weightRef.current.value)*5 : 0)
+    
     if (
       codeRef.current.value === "" ||
       sortRef.current.value === "" ||
-      weightRef.current.value === ""
+      weightRef.current.value === "" || addrRef.current.value === ""
     ) {
       setCanSubmit(false);
       return;
@@ -29,7 +33,9 @@ function BagForm() {
 
   return (
     <main className={style.main}>
-      <form className={style["form-card"]} onSubmit={submitHandler}>
+      
+      <form className={style["form-card"] } onSubmit={submitHandler}>
+        <div className={style.fixDiv}>
         <h3 className={style.heading}>Send request</h3>
 
         <div className={style.control}>
@@ -51,7 +57,7 @@ function BagForm() {
         <div className={style.control}>
           <label htmlFor="address">Address</label>
           <input
-            ref={weightRef}
+            ref={addrRef}
             type="number"
             id="address"
             placeholder="Type your address"
@@ -71,7 +77,7 @@ function BagForm() {
 
         <button disabled={!canSubmit} className={style.submit} type="submit">
           Submit
-        </button>
+        </button></div>
       </form>
     </main>
   );

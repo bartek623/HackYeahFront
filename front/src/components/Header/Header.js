@@ -35,14 +35,12 @@ function Header() {
   };
 
   return (
-    <header className={style["main-header"]}>
-      <div>Logo</div>
-      <button onClick={mobileMenuHandler} className="material-symbols-outlined">
+    <header className={style['main-header']}>
+      <div className={style.logo}>Logo</div>
+      <button onClick={mobileMenuHandler} className='material-symbols-outlined' >
         menu
       </button>
-      <nav
-        className={`${style["main-nav"]} ${isUnrolled ? style.unrolled : ""}`}
-      >
+      <nav className={`${style['main-nav']} ${isUnrolled ? style.unrolled : ''} `}>
         <ul>
           <li>
             <Link to="/">Homepage</Link>
@@ -80,8 +78,8 @@ function Header() {
         </ul>
       </nav>
       <div className={style.tokens}>
-        <p>Your balance: </p>
-        <span>{userCtx.user.token}</span>
+        <p>Tokens balance: </p>
+        <span>0</span>
       </div>
     </header>
   );
