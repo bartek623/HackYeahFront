@@ -12,7 +12,6 @@ function Authorization() {
 
   const [canLogin, setCanLogin] = useState(false);
   const [isRegistering, setIsRegistering] = useState(false);
-
   const inputLogin = useRef();
   const inputFName = useRef();
   const inputLName = useRef();
