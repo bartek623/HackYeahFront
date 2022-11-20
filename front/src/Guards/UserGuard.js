@@ -5,9 +5,8 @@ import { Navigate } from "react-router-dom";
 
 function UserGuard(props) {
   const userCtx = useContext(UserContext);
-  console.log(userCtx.user);
 
-  if (userCtx.user) {
+  if (userCtx.user?.login) {
     return <Navigate to={`/`} />;
   }
 

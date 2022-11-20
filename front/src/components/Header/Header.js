@@ -3,28 +3,46 @@ import { Link } from "react-router-dom";
 
 import { UserContext } from "../../store/user-context";
 import style from "./Header.module.css";
+import useFetch from "../../hooks/useFetch";
 import { useState } from "react";
 
-
 function Header() {
+  //
+  const { setData } = useFetch();
+  //
+
   const userCtx = useContext(UserContext);
 
   const logoutHandler = function () {
     userCtx.logout();
   };
-  
+
   const [isUnrolled, setRolled] = useState(false);
-  const mobileMenuHandler = function(){
-    
-  }
+
+  const mobileMenuHandler = function () {
+    setRolled((p) => !p);
+  };
+
+  const checkApiHandler = function () {
+    const data = { login: "aasd", password: "asdasfafs" };
+    setData(
+      data,
+      (info) => {
+        console.log(info);
+      },
+      "api/receivers"
+    );
+  };
 
   return (
     <header className={style["main-header"]}>
       <div>Logo</div>
-      <button onClick={mobileMenuHandler} className='material-symbols-outlined' >
+      <button onClick={mobileMenuHandler} className="material-symbols-outlined">
         menu
       </button>
-      <nav className={style["main-nav"]}>
+      <nav
+        className={`${style["main-nav"]} ${isUnrolled ? style.unrolled : ""}`}
+      >
         <ul>
           <li>
             <Link to="/">Homepage</Link>
@@ -32,7 +50,7 @@ function Header() {
           {userCtx.user?.login && (
             <>
               <li>
-                <Link to="/Profile">Profile</Link>
+                <Link to="/profile">Profile</Link>
               </li>
               <li>
                 <Link to="/history">History</Link>
@@ -56,11 +74,14 @@ function Header() {
               <Link to="/authorization">Log in</Link>
             </li>
           )}
+          <li>
+            <button onClick={checkApiHandler}>Check Api</button>
+          </li>
         </ul>
       </nav>
       <div className={style.tokens}>
         <p>Your balance: </p>
-        <span>0</span>
+        <span>{userCtx.user.token}</span>
       </div>
     </header>
   );
