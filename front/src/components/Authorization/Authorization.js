@@ -10,7 +10,7 @@ function Authorization() {
 
   const userCtx = useContext(UserContext);
 
-  const [canLogin, setCanLogin] = useState(false);
+  const [canLogin, setCanLogin] = useState(true);
   const [isRegistering, setIsRegistering] = useState(false);
   const inputLogin = useRef();
   const inputFName = useRef();
