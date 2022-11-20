@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 
 import { UserContext } from "../../store/user-context";
 import style from "./Header.module.css";
+import { useState } from "react";
+
 
 function Header() {
   const userCtx = useContext(UserContext);
@@ -10,10 +12,18 @@ function Header() {
   const logoutHandler = function () {
     userCtx.logout();
   };
+  
+  const [isUnrolled, setRolled] = useState(false);
+  const mobileMenuHandler = function(){
+    
+  }
 
   return (
     <header className={style["main-header"]}>
       <div>Logo</div>
+      <button onClick={mobileMenuHandler} className='material-symbols-outlined' >
+        menu
+      </button>
       <nav className={style["main-nav"]}>
         <ul>
           <li>
