@@ -4,18 +4,18 @@ import { useState } from "react";
 
 
 function Header() {
-  const [isUnrolled, setRolled] = useState(false);
+  const [isUnrolled, setUnRolled] = useState(false);
   const mobileMenuHandler = function(){
-    
+    setUnRolled(p=>!p);
   }
 
   return (
-    <header className={style["main-header"]}>
-      <div>Logo</div>
+    <header className={style['main-header']}>
+      <div className={style.logo}>Logo</div>
       <button onClick={mobileMenuHandler} className='material-symbols-outlined' >
         menu
       </button>
-      <nav className={style["main-nav"]}>
+      <nav className={`${style['main-nav']} ${isUnrolled ? style.unrolled : ''} `}>
         <ul>
           <li>
             <Link to="/">Homepage</Link>
@@ -42,7 +42,7 @@ function Header() {
         </ul>
       </nav>
       <div className={style.tokens}>
-        <p>Your balance: </p>
+        <p>Tokens balance: </p>
         <span>0</span>
       </div>
     </header>

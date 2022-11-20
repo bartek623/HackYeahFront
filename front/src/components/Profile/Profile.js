@@ -28,7 +28,7 @@ function Profile(){
                         <div className={style.divek}><label>Address: </label></div>
 
                         <hr></hr>
-
+                        <div className={style.changes}>
                         <div className={style.divek}>
                             <label>New user name: </label>
                             <input ref={inputUName} onChange={changeHandler} type="text"></input>
@@ -46,7 +46,7 @@ function Profile(){
                             <input ref={inputAddr} onChange={changeHandler} type="text"></input>
                         </div>
                         <button className={style.btn} disabled={isDisabled}>Update</button>
-                        
+                        </div>
                     </fieldset>
     </div>;
 }

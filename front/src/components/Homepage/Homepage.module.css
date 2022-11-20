@@ -1,5 +1,6 @@
 .main {
-  background-color: #222;
+  background-color: rgba(142, 142, 142, 0.8);
+  background-color: #ddd;
   height: 100%;
   padding-top: 1.6rem;
 }
@@ -37,13 +38,13 @@
 .hero-text h2 {
   font-size: 6.4rem;
   margin-bottom: 1.6rem;
-  color: #ddd;
+  color: rgb(39, 39, 39,0.8);
   letter-spacing: -1px;
 }
 
 .hero-text p {
   font-size: 2rem;
-  color: #888;
+  color: #272727;
   letter-spacing: 1px;
   line-height: 1.3;
 }

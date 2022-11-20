@@ -1,7 +1,7 @@
 .container{
     width: 100vw;
     height: 100vh;
-    background-color: black;
+    background-color: #f7b42e;
     color: white;
 }
 
@@ -15,7 +15,7 @@
 
 .fildek{
     font-weight: bolder;
-    font-size: xx-large;
+    font-size: large;
     border-radius: 20px;;
     width: 40vw;
     background-color: rgb(37, 36, 36);
@@ -44,7 +44,27 @@
 }
 
 .btn{
-    margin-top: 10px;
-    width: 20;
+    background-color: #f7b42e;
+  border: none;
+  color: rgb(34,34,34,0.8);
+  font-weight: bold;
+  padding: 12px 28px;
+  border-radius: 0.8rem;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+
 }
 
+.changes{
+    display: none;
+}
+
+@media (max-width: 44rem){
+    .fildek{
+        font-size:x-small;
+    }
+}
