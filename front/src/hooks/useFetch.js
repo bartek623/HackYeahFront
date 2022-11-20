@@ -4,13 +4,17 @@ function useFetch() {
   const [isLoading, setIsLoading] = useState();
   const [error, setError] = useState();
 
-  const getData = useCallback(async function (applyFn, type) {
+  const getData = useCallback(async function (dataToSend, applyFn, type) {
     setIsLoading(true);
 
-    const url = `https://textiles-hy2022.herokuapp.com/api/${type}`;
+    const url = `https://textiles-hy2022.herokuapp.com/api/${type}/asd`;
 
     try {
-      const res = await fetch(url);
+      const res = await fetch(url, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(dataToSend),
+      });
 
       if (!res.ok) throw new Error("Something went wrong");
 
