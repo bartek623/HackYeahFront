@@ -51,3 +51,24 @@
 .hero-text p:not(:last-child) {
   margin-bottom: 1.2rem;
 }
+
+
+
+@media (max-width: 38em){
+  .section-hero{
+    grid-template-columns: 1fr;
+    margin-top: 6rem;
+  }
+  .hero-img{
+    border-radius: 100rem;
+    width: 70%;
+    margin-right: auto;
+    margin-top: 2rem;
+  }
+  .hero-text p{
+    font-size: 1.2rem;
+  }
+  .hero-text h2{
+    font-size: 3rem;
+  }
+}

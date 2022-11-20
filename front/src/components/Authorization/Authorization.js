@@ -70,7 +70,9 @@ function Authorization() {
     }
   };
 
-  return <div className={style.container}>
+  return
+  <UserGuard>
+  <div className={style.container}>
     <section className={style.card}>
       <fieldset onSubmit={submitHandler}>
         <legend className={style.legend}>FILL USER DATA TO PROCEED</legend>
@@ -114,7 +116,7 @@ function Authorization() {
         </form>
       </fieldset>
 
-    </section></div>
+    </section></div></UserGuard>
 }
 
 export default Authorization;
