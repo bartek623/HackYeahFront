@@ -5,8 +5,8 @@ import { UserContext } from "../store/user-context";
 function GuestGuard(props) {
   const userCtx = useContext(UserContext);
 
-  if (!userCtx.user) {
-    return <Navigate to="/auth" />;
+  if (!userCtx.user?.login) {
+    return <Navigate to="/authorization" />;
   }
 
   return <>{props.children}</>;
