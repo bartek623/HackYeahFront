@@ -28,7 +28,14 @@ export function UserContextProvider(props) {
   return (
     <UserContext.Provider
       value={{
-        user,
+        user: {
+          login: "asd",
+          firstName: "Asd",
+          lastName: "Fgh",
+          address: "address",
+          token: 12,
+        },
+        // user,
         login: loginHandler,
         logout: logoutHandler,
       }}

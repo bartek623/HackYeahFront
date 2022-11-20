@@ -18,9 +18,8 @@ function Main() {
       <Routes>
         <Route path="/*" element={<PageNotFound />} />
         <Route path="/" element={<Homepage />} />
-        <Route path="/Profile" element={<Profile />} />
-        <Route path="/Authorization" element={<Authorization />} />
-        <Route path="/history" />
+        <Route path="/authorization" element={<Authorization />} />
+        <Route path="/profile" element={<Profile />} />
         <Route path="/history" element={<History />} />
         <Route path="/form" element={<BagForm />} />
         <Route path="/admin-panel" element={<AdminPanel />} />
