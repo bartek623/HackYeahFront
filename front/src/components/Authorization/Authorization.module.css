@@ -82,3 +82,17 @@
     border-radius: 10px;
     color: rgb(34,34,34,0.8);
 }
+
+@keyframes coming{
+    from{top: -300; opacity:0 ;}
+    to{top:0; opacity: 100;}
+}
+
+.confPass{
+    position: relative;
+    top: -65px;
+}
+
+.confPass{
+    animation: coming 2s forwards;
+}
