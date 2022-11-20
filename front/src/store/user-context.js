@@ -15,19 +15,23 @@ export const UserContext = React.createContext({
 });
 
 export function UserContextProvider(props) {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(userInitial);
 
   const loginHandler = function (data) {
     setUser(data);
   };
 
   const logoutHandler = function () {
-    setUser(null);
+    setUser(userInitial);
   };
 
   return (
     <UserContext.Provider
-      value={{ user, login: loginHandler, logout: logoutHandler }}
+      value={{
+        user,
+        login: loginHandler,
+        logout: logoutHandler,
+      }}
     >
       {props.children}
     </UserContext.Provider>
