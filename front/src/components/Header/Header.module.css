@@ -72,3 +72,26 @@
   background-color: #777;
   width: 100%;
 }
+
+.main-header button{
+  background: none;
+  border: none;
+  color: white;
+}
+
+.main-header button:hover{
+  color: #888686;
+}
+
+@media (max-width: 38em){
+  .tokens p{
+    display: none;
+  }
+  .tokens:hover p{
+    display: block;
+  }
+
+  .main-nav{
+    display: none;
+  }
+}
