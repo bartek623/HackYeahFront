@@ -1,10 +1,14 @@
-import { useRef } from "react";
+import { useContext, useRef } from "react";
 import { useState } from "react";
+import UserGuard from "../../Guards/UserGuard";
 import useFetch from "../../hooks/useFetch";
+import { UserContext } from "../../store/user-context";
 import style from "./Authorization.module.css";
 
 function Authorization() {
   const { setData, getData } = useFetch();
+
+  const userCtx = useContext(UserContext);
 
   const [canLogin, setCanLogin] = useState(false);
   const [isRegistering, setIsRegistering] = useState(false);
@@ -47,8 +51,8 @@ function Authorization() {
   const submitHandler = function (e) {
     e.preventDefault();
     console.log("submitted");
-
     let data;
+
     if (isRegistering) {
       data = {
         idClient: Math.random(),
@@ -58,20 +62,31 @@ function Authorization() {
         lastName: inputLName.current.value,
         address: inputAddr.current.value,
       };
-      setData(data, () => {}, "clients");
+      setData(
+        data,
+        (data) => {
+          userCtx.login(data);
+        },
+        "clients"
+      );
     } else {
       data = {
+        type: "login",
         login: inputLogin.current.value,
         password: inputP.current.value,
       };
-      getData((data) => {
-        console.log(data);
-      }, "clients");
+
+      getData(
+        data,
+        (data) => {
+          userCtx.login(data);
+        },
+        "clients"
+      );
     }
   };
 
-  return
-  <UserGuard>
+  return <UserGuard>
   <div className={style.container}>
     <section className={style.card}>
       <fieldset onSubmit={submitHandler}>
@@ -109,14 +124,18 @@ function Authorization() {
 
         </div></div>
 
-        <div className={style.buttons}>
-        <button className={style.btn} onClick={zmien}>{isRegistering==1 ? "LOG IN" : "SIGN UP"}</button>
-        {canLogin &&  <button >SEND</button>} 
-        </div>
-        </form>
-      </fieldset>
-
-    </section></div></UserGuard>
+              <div className={style.buttons}>
+                <button type="button" className={style.btn} onClick={zmien}>
+                  {isRegistering === 1 ? "LOG IN" : "SIGN UP"}
+                </button>
+                {canLogin && <button type="submit">SEND</button>}
+              </div>
+            </form>
+          </fieldset>
+        </section>
+      </div>
+    </UserGuard>
+  ;
 }
 
 export default Authorization;
