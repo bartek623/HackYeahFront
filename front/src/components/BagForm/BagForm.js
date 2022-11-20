@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-import heroImg from "../../img/hero-img.jpeg";
+// import heroImg from "../../img/hero-img.jpeg";
 
 import style from "./BagForm.module.css";
 

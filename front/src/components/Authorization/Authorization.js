@@ -6,7 +6,7 @@ import { UserContext } from "../../store/user-context";
 import style from "./Authorization.module.css";
 
 function Authorization() {
-  const { setData, getData } = useFetch();
+  const { setData } = useFetch();
 
   const userCtx = useContext(UserContext);
 
