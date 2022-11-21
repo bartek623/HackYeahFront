@@ -46,7 +46,6 @@ function useFetch() {
         },
         body: JSON.stringify(dataToSend),
       });
-      console.log(res);
 
       if (!res.ok) throw new Error("Something went wrong");
 
