@@ -1,9 +1,3 @@
-.main {
-  background-color: #222;
-  height: 100%;
-  padding-top: 1.6rem;
-}
-
 .section-hero {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -52,23 +46,21 @@
   margin-bottom: 1.2rem;
 }
 
-
-
-@media (max-width: 38em){
-  .section-hero{
+@media (max-width: 38em) {
+  .section-hero {
     grid-template-columns: 1fr;
     margin-top: 6rem;
   }
-  .hero-img{
+  .hero-img {
     border-radius: 100rem;
     width: 70%;
     margin-right: auto;
     margin-top: 2rem;
   }
-  .hero-text p{
+  .hero-text p {
     font-size: 1.2rem;
   }
-  .hero-text h2{
+  .hero-text h2 {
     font-size: 3rem;
   }
 }

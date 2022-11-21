@@ -9,11 +9,9 @@ import Authorization from "../Authorization/Authorization";
 import History from "../History/History";
 import AdminPanel from "../AdminPanel/AdminPanel";
 
-import style from "./Main.module.css";
-
 function Main() {
   return (
-    <div className={style.container}>
+    <>
       <Header />
       <Routes>
         <Route path="/*" element={<PageNotFound />} />
@@ -24,7 +22,7 @@ function Main() {
         <Route path="/form" element={<BagForm />} />
         <Route path="/admin-panel" element={<AdminPanel />} />
       </Routes>
-    </div>
+    </>
   );
 }
 
