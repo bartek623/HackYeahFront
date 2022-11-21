@@ -1,10 +1,10 @@
-import AppPage from "./pages/AppPage";
+import Main from "./components/Main/Main";
 import { UserContextProvider } from "./store/user-context";
 
 function App() {
   return (
     <UserContextProvider>
-      <AppPage />
+      <Main />
     </UserContextProvider>
   );
 }

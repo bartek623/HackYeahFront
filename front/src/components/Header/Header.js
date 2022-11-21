@@ -8,7 +8,7 @@ import { useState } from "react";
 
 function Header() {
   //
-  const { setData } = useFetch();
+  const { setData, getData } = useFetch();
   //
 
   const userCtx = useContext(UserContext);
@@ -24,14 +24,20 @@ function Header() {
   };
 
   const checkApiHandler = function () {
-    const data = { login: "aasd", password: "asdasfafs" };
-    setData(
-      data,
-      (info) => {
-        console.log(info);
-      },
-      "api/receivers"
-    );
+    console.log("clicked");
+    const data = {
+      id: 4,
+      receiverId: "123sasda",
+      name: "asd",
+      address: "qwerty",
+      carbonFootprint: 2,
+      tokens: 55,
+    };
+    const table = "receivers";
+
+    setData(data, () => {}, table);
+
+    getData(() => {}, table);
   };
 
   return (
