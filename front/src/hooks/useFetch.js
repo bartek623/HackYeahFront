@@ -13,8 +13,8 @@ function useFetch() {
 
   // headers.append("GET", "POST", "OPTIONS");
   // authorization: "Basic " + window.btoa("user:password");
-  const url = "http://171.25.230.60:33000/api/";
-  // const url = "https://textiles-hy2022.herokuapp.com/api/";
+  // const url = "http://171.25.230.60:33000/api/";
+  const url = "https://textiles-hy2022.herokuapp.com/api/";
 
   const getData = useCallback(async function (applyFn, type) {
     setIsLoading(true);
@@ -43,6 +43,7 @@ function useFetch() {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          Authorization: "Basic " + window.btoa("user:password"),
         },
         body: JSON.stringify(dataToSend),
       });
