@@ -1,8 +1,8 @@
 import { useCallback, useState } from "react";
 
 function useFetch() {
-  const [isLoading, setIsLoading] = useState();
-  const [error, setError] = useState();
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
 
   // let headers = new Headers();
   // headers.append("Content-Type", "application/json");
@@ -13,14 +13,19 @@ function useFetch() {
 
   // headers.append("GET", "POST", "OPTIONS");
   // authorization: "Basic " + window.btoa("user:password");
-  // const url = "http://171.25.230.60:33000/api/";
+
+  // const url = "http://171.25.230.60:33000/";
   const url = "https://textiles-hy2022.herokuapp.com/api/";
 
-  const getData = useCallback(async function (applyFn, type) {
+  const sendRequest = useCallback(async function (
+    tab,
+    options,
+    applyFn = () => {}
+  ) {
     setIsLoading(true);
 
     try {
-      const res = await fetch(url + type);
+      const res = await fetch(url + tab, options);
 
       if (!res.ok) throw new Error("Something went wrong");
 
@@ -29,38 +34,13 @@ function useFetch() {
       console.log(data);
       applyFn(data);
     } catch (err) {
-      console.error(err);
       setError(err.message);
     }
+
     setIsLoading(false);
-  }, []);
+  },
+  []);
 
-  const setData = useCallback(async function (dataToSend, applyFn, type) {
-    setIsLoading(true);
-
-    try {
-      const res = await fetch(url + type, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: "Basic " + window.btoa("user:password"),
-        },
-        body: JSON.stringify(dataToSend),
-      });
-
-      if (!res.ok) throw new Error("Something went wrong");
-
-      const data = await res.json();
-
-      console.log(data);
-      applyFn(data);
-    } catch (err) {
-      console.error(err);
-      setError(err.message);
-    }
-    setIsLoading(false);
-  }, []);
-
-  return { getData, setData, error, isLoading };
+  return { error, isLoading, sendRequest };
 }
 export default useFetch;

@@ -5,9 +5,7 @@ function History() {
   return (
     <main className={style.main}>
       <div className={style.card}>
-        <div className={style.results}>
-          <List></List>
-        </div>
+        <List></List>
       </div>
     </main>
   );

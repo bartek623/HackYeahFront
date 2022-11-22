@@ -15,14 +15,19 @@ body {
 }
 
 #root {
-  min-height: 100vh;
+  height: 100vh;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
 
 main {
   flex: 1;
+  max-height: 100%;
   background-color: #222;
-  height: 100%;
-  padding-top: 1.6rem;
+  padding: 1.6rem 0;
+  overflow: auto;
+
+  display: flex;
+  align-items: stretch;
 }

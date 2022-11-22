@@ -8,7 +8,7 @@ import { useState } from "react";
 
 function Header() {
   //
-  const { setData, getData } = useFetch();
+  const { sendRequest } = useFetch();
   //
 
   const userCtx = useContext(UserContext);
@@ -35,9 +35,15 @@ function Header() {
     };
     const table = "receivers";
 
-    setData(data, () => {}, table);
-
-    getData(() => {}, table);
+    sendRequest(table, {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+        Authorization: "Basic " + window.btoa("user:password"),
+      },
+      body: JSON.stringify(data),
+    });
+    sendRequest(table, { method: "GET" });
   };
 
   return (
